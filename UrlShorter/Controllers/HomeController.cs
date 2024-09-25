@@ -1,21 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using UrlShorter.Models;
+using UrlShorter.Services.Interfaces;
 
 namespace UrlShorter.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IUrlEntryService _entryService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IUrlEntryService entryService)
         {
-            _logger = logger;
+            _entryService = entryService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            return View(_entryService.GetUrlEntriesToTableAsync());
         }
 
         public IActionResult Privacy()

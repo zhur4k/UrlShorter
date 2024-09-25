@@ -12,7 +12,7 @@ namespace UrlShorter.Services
 
         private readonly IUrlEntryRepository _urlEntryRepository;
 
-        UrlEntryService(IUrlEntryRepository urlEntryRepository)
+        public UrlEntryService(IUrlEntryRepository urlEntryRepository)
         {
             _urlEntryRepository = urlEntryRepository;
         }
