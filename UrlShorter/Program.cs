@@ -1,10 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using UrlShorter.Data;
+using UrlShorter.Repository;
+using UrlShorter.Repository.Interfaces;
+using UrlShorter.Services;
+using UrlShorter.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IUrlEntryRepository, UrlEntryRepository>();
+builder.Services.AddScoped<IUrlEntryService, UrlEntryService>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
