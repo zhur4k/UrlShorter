@@ -5,16 +5,14 @@ namespace UrlShorter.Services.Interfaces
 {
     public interface IUrlEntryService
     {
-        Task<IEnumerable<UrlEntryTableDto>> GetUrlEntriesToTableAsync();
+        Task<IEnumerable<UrlEntry>> GetUrlEntriesToTableAsync();
 
-        Task<bool> AddUrlEntryAsync(UrlEntry url);
+        Task AddUrlEntryAsync(string longUrl);
 
-        Task<bool> UpdateUrlEntryAsync(UrlEntry url);
+        Task UpdateUrlEntryAsync(UrlEntryUpdateDto urlDto);
 
-        Task<bool> DeleteUrlEntryAsync(UrlEntry url);
+        Task DeleteUrlEntryAsync(UrlEntry url);
 
-        Task<bool> registerClickAsync(UrlEntry url);
-
-        Task<bool> getLongUrlEntryAsync(UrlEntry url);
+        Task<string> GetLongUrlEntryAsync(string shortUrl);
     }
 }
