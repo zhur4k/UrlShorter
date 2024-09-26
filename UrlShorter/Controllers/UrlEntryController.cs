@@ -13,6 +13,22 @@ namespace UrlShorter.Controllers
         {
             _urlEntryService = urlEntryService;
         }
+
+        [HttpGet]
+        [Route("getAll")]
+        public async Task<IActionResult> GetAllUrlEntry()
+        {
+            try
+            {
+                var urlEntries = await _urlEntryService.GetUrlEntriesToTableAsync();
+                return Ok(urlEntries);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal Server Error: " + ex.Message);
+            }
+        }
+
         [HttpGet]
         [Route("{shortUrl}")]
         public async Task<IActionResult> UrlEntryRedirect(string shortUrl) 
@@ -35,11 +51,11 @@ namespace UrlShorter.Controllers
 
         [HttpPost]
         [Route("create")]
-        public async Task<IActionResult> Create(string longUrl)
+        public async Task<IActionResult> Create([FromBody] UrlEntryCreateDto urlDto)
         {
             try
             {
-                await _urlEntryService.AddUrlEntryAsync(longUrl);
+                await _urlEntryService.AddUrlEntryAsync(urlDto.LongUrl);
 
                 return StatusCode(201, "The URL was created successfully.");
             }
@@ -49,9 +65,9 @@ namespace UrlShorter.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("edit")]
-        public async Task<IActionResult> Edit(UrlEntryUpdateDto urlDto)
+        public async Task<IActionResult> Edit([FromBody] UrlEntryUpdateDto urlDto)
         {
             try
             {
