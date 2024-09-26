@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using UrlShorter.Models;
 using UrlShorter.Services.Interfaces;
 
 namespace UrlShorter.Controllers
@@ -15,20 +13,10 @@ namespace UrlShorter.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(_entryService.GetUrlEntriesToTableAsync());
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var urlEntries = await _entryService.GetUrlEntriesToTableAsync();
+            return View(urlEntries);
         }
     }
 }
