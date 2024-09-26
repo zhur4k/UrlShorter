@@ -83,7 +83,7 @@ namespace UrlShorter.Controllers
 
         [HttpPost]
         [Route("delete/{id}")]
-        public async Task<IActionResult> Deletet(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
