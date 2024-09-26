@@ -11,7 +11,7 @@ namespace UrlShorter.Services.Interfaces
 
         Task UpdateUrlEntryAsync(UrlEntryUpdateDto urlDto);
 
-        Task DeleteUrlEntryAsync(UrlEntry url);
+        Task DeleteUrlEntryAsync(int id);
 
         Task<string> GetLongUrlEntryAsync(string shortUrl);
     }
