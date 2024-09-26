@@ -18,15 +18,15 @@ namespace UrlShorter.Data
                     {
                         new UrlEntry()
                         {
-                            LongUrl = "https://github.com/teddysmithdev/RunGroop/blob/master/RunGroopWebApp/Data/Seed.cs",
-                            ShortUrl = "RunGroop/blob/master/RunGroopWebApp/Data/Seed.cs",
+                            LongUrl = "https://www.youtube.com/",
+                            ShortUrl = "1",
                             ClickCount = 2,
                             CreatedDate = DateTime.Now.AddDays(1),
                          },
                         new UrlEntry()
                         {
-                            LongUrl = "https://github.com/teddysmithdev/RunGroop",
-                            ShortUrl = "RunGroop/blob",
+                            LongUrl = "https://www.youtube.com/watch?v=6-shbSFc48E&ab_channel=VinhGiang",
+                            ShortUrl = "2",
                             ClickCount = 5,
                             CreatedDate = DateTime.Now.AddDays(3),
                          }
