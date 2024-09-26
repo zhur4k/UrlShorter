@@ -35,11 +35,13 @@ namespace UrlShorter.Services
             await _urlEntryRepository.AddAsync(url);
         }
 
-        public async Task DeleteUrlEntryAsync(UrlEntry url)
+        public async Task DeleteUrlEntryAsync(int id)
         {
+            var url = await _urlEntryRepository.GetByIdAsync(id);
+
             if (url == null)
             {
-                throw new ArgumentNullException(nameof(url), "The URL entry cannot be null.");
+                throw new ArgumentNullException(nameof(id), $"URL entry with ID {id} not found.");
             }
 
             await _urlEntryRepository.DeleteAsync(url);
@@ -48,6 +50,12 @@ namespace UrlShorter.Services
         public async Task<string> GetLongUrlEntryAsync(string shortUrl)
         {
             var url = await _urlEntryRepository.GetByShortUrlAsync(shortUrl);
+
+            if (string.IsNullOrEmpty(url.LongUrl))
+            {
+                throw new ArgumentNullException(nameof(url), "URL not found.");
+            }
+
             await RegisterClickAsync(url);
             return url.LongUrl;
         }
