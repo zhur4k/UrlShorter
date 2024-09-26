@@ -5,7 +5,9 @@ VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UrlShorter", "UrlShorter\UrlShorter.csproj", "{AB03A301-84CA-4009-9863-C0E6F07C996A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShorter.Tests", "UrlShorter.Tests\UrlShorter.Tests.csproj", "{40CD3DEF-974D-46BD-AAE8-9C5722692D32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UrlShorter.Tests", "UrlShorter.Tests\UrlShorter.Tests.csproj", "{40CD3DEF-974D-46BD-AAE8-9C5722692D32}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{CA1807DD-CF9C-4A50-80B1-A7D647FFE6FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
