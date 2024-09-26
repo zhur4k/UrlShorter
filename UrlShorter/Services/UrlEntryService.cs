@@ -96,7 +96,7 @@ namespace UrlShorter.Services
             }
             var url = await _urlEntryRepository.GetByIdAsync(urlDto.Id);
 
-            url.ShortUrl = await GenerateShortUrlEntryAsync(url.LongUrl);
+            url.LongUrl = urlDto.LongUrl;
 
             await _urlEntryRepository.UpdateAsync(url);
         }
