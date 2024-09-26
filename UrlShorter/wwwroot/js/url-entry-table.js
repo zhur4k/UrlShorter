@@ -24,7 +24,7 @@ function renderTable() {
         const shortUrl = window.location.origin + "/url/" + entry.shortUrl;
 
         row.innerHTML = `
-                 <td><a href="${entry.longUrl}" target="_blank">${entry.longUrl}</a></td>
+                 <td><a style="text-wrap: wrap; word-wrap: break-word;" href="${entry.longUrl}" target="_blank">${entry.longUrl}</a></td>
                 <td><a href="${shortUrl}" target="_blank">${shortUrl}</a></td>
                 <td>${formattedDate}</td>
                 <td>${entry.clickCount}</td>
