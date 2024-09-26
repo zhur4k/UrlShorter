@@ -73,7 +73,7 @@ namespace UrlShorter.Tests.Controller
 
             // Assert
             var redirectResult = Assert.IsType<RedirectResult>(result);
-            Assert.Equal(longUrl, redirectResult.Url);  // Убедитесь, что редирект ведет на правильный URL
+            Assert.Equal(longUrl, redirectResult.Url);
         }
 
         [Fact]
@@ -123,7 +123,7 @@ namespace UrlShorter.Tests.Controller
 
             // Assert
             var statusCodeResult = Assert.IsType<ObjectResult>(result);
-            Assert.Equal(500, statusCodeResult.StatusCode);  // Убедитесь, что вернулся статус 500
+            Assert.Equal(500, statusCodeResult.StatusCode);
             Assert.Equal("Internal Server Error: Database error", statusCodeResult.Value);
         }
 
