@@ -53,7 +53,7 @@ namespace UrlShorter.Services
 
             if (string.IsNullOrEmpty(url.LongUrl))
             {
-                throw new ArgumentNullException(nameof(url), "URL not found.");
+                throw new ArgumentNullException("URL not found.");
             }
 
             await RegisterClickAsync(url);
