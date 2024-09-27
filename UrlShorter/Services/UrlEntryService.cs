@@ -30,6 +30,11 @@ namespace UrlShorter.Services
         /// <exception cref="InvalidOperationException">Thrown when the URL already exists in the database.</exception>
         public async Task AddUrlEntryAsync(string longUrl)
         {
+            if (!Uri.IsWellFormedUriString(longUrl, UriKind.Absolute))
+            {
+                throw new ArgumentException("Invalid URL format.", nameof(longUrl));
+            }
+
             if (await _urlEntryRepository.IsExistByLongUrlAsync(longUrl))
             {
                 throw new InvalidOperationException("The URL already exists in the database.");
@@ -134,6 +139,12 @@ namespace UrlShorter.Services
             {
                 throw new ArgumentNullException(nameof(urlDto), "The URL entry cannot be null.");
             }
+
+            if (!Uri.IsWellFormedUriString(urlDto.LongUrl, UriKind.Absolute))
+            {
+                throw new ArgumentException("Invalid URL format.", nameof(urlDto.LongUrl));
+            }
+
             var url = await _urlEntryRepository.GetByIdAsync(urlDto.Id);
 
             url.LongUrl = urlDto.LongUrl;
