@@ -43,6 +43,16 @@ namespace UrlShorter.Tests.Services
         }
 
         [Fact]
+        public async Task AddUrlEntryAsync_ShouldThrowException_WhenUrlIsInvalid()
+        {
+            // Arrange
+            var longUrl = "hample.com";
+
+            // Act  Assert
+            await Assert.ThrowsAsync<ArgumentException>(() => _urlEntryService.AddUrlEntryAsync(longUrl));
+        }
+
+        [Fact]
         public async Task DeleteUrlEntryAsync_ShouldDeleteUrl_WhenUrlExists()
         {
             // Arrange
@@ -136,6 +146,16 @@ namespace UrlShorter.Tests.Services
             // Assert
             Assert.Equal("http://updated.com", urlEntry.LongUrl);
             _urlEntryRepositoryMock.Verify(r => r.UpdateAsync(urlEntry), Times.Once);
+        }
+
+        [Fact]
+        public async Task UpdateUrlEntryAsync_ShouldThrowException_WhenUrlIsInvalid()
+        {
+            // Arrange
+            var longUrl = "hample.com";
+
+            // Act  Assert
+            await Assert.ThrowsAsync<ArgumentException>(() => _urlEntryService.AddUrlEntryAsync(longUrl));
         }
 
         [Fact]
